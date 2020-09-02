@@ -7,54 +7,56 @@ public class Main {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 Scanner in =new Scanner(System.in);
-System.out.println("input two number:");
-int []prime=new int[201]; 
-int n,m;
-System.out.println("input 2 mumbers:");
-n=in.nextInt();
-m=in.nextInt();
-prime[0]=2;
-int len=200;
+System.out.println("input a muber:");
+int a=in.nextInt();
+int [] b=new int [10];
 int count=0;
-int x=3;
-while(count<len)
+int n=0;
+int m=0;
+int n1;
+if(a<0)
 {
-	int isprime=1;
-	for(int i=2;i<x;i++)
-	{
-		if(x%i==0)
-		{
-			isprime=0;
-			break;
-		}
-	}
-	if(isprime==1)
-	{
-		prime[count+1]=x;
-		count++;
-	}
-	else
-	{
- System.out.println(x+"its not a prime");
-	}
-	x++;
+	a=-a;
+	System.out.print("fu ");
 }
-int sum=0;
-for(;(m-n)>=0;)
+while(a!=0)
 {
-	sum+=prime[n-1];
+	n1=a%10;
+	a=a/10;
+	b[count]=n1;
+	count++;
 	n++;
 }
-System.out.println("zonghe:"+sum);
-
+for(count=n-1;count>=0; count--)
+{
+	m=b[count];
+	switch(m)
+    {
+    case 0:System.out.print("ling");
+    break;
+    case 1:System.out.print("yi");
+    break;
+    case 2:System.out.print("er");
+    break;
+    case 3:System.out.print("san");
+    break;
+    case 4:System.out.print("si");
+    break;
+    case 5:System.out.print("wu");
+    break;
+    case 6:System.out.print("liu");
+    break;
+    case 7:System.out.print("qi");
+    break;
+    case 8:System.out.print("ba");
+    break;
+    case 9:System.out.print("jiu");
+    break;
+    }
+    System.out.print(" ");
 }
-	
-	
-	
 }
-
-
-
+}
 
 
 
