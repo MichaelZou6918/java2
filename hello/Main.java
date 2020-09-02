@@ -5,47 +5,77 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args)
-	{
+{
 		// TODO Auto-generated method stub
-Scanner in =new Scanner(System.in);
-int count = 0;//统计输入得第几个多项式
-int[] list = new int[12];//创建数组
-//把输入的多项式相加
-do {
-	int index = in.nextInt();//幂数
-	int value = in.nextInt();//系数
-	list[index] += value;
-	if (index == 0)
-	 {
-		count++;
-	 }
-   } while(count < 2);//第二个多项式输完跳出循环
-
-boolean flag=true;//为下面循环做准备
-
-for (int i = 11;i >= 0;i--) 
- {
-	if (list[i] != 0)//系数不为零进入循环
-	 {
-		if (!flag && list[i] > 0)//第一次进入循环为true不带加号
-			System.out.print("+");
-		if (i == 0)//幂为零的情况
-			System.out.print(list[i]);
-		if(i > 1 && list[i] != 1)
-			System.out.print(list[i] + "x" + i);
-		if(i > 1 && list[i] == 1)//系数为1的情况
-			System.out.print("x" + i);
-		if(i == 1 && list[i] != 1)//幂数为1的情况下
-			System.out.print(list[i] + "x1");
-		if(i == 1 && list[i] == 1)//幂数系数都为1的情况
-			System.out.print("x");
-		flag = false;//保证第一次循环后上面那个加号可以启用
+		Scanner in = new Scanner(System.in);
+        int[] a=new int[101];//存放第一个多项式
+        int[] b=new int[101];//存放第二个多项式
+        int[] c=new int[101];//存放合并后的多项式
+        int count=0;//用来统计输出的项数
+        int n=0;//n表示幂次
+        int x=0;//x表示系数
+        do//第一个多项式
+        {
+            n=in.nextInt();
+            x=in.nextInt();
+            a[n]=x;
+        }while(n!=0);//得到第二个多项式
+        do
+        {
+            n=in.nextInt();
+            x=in.nextInt();
+            b[n]=x;
+        }while(n!=0);//合并多项式
+        int max=0;
+        boolean isFirst=true;
+        for(int i=0;i<101;i++)
+        {
+            c[i]=a[i]+b[i];
+            if(c[i]!=0)
+            {
+            	max=i;//找到最高次幂为max;
+            }
+        }
+        for(int i=max;i>=0;i--)
+        {
+        	if(max==0)
+        	{
+        	System.out.print(c[0]);
+        	break;
+        	}
+        	if(c[i]==0)
+        	{
+        		continue;
+        	}
+        	if(isFirst)
+        	{
+        		isFirst=false;
+        	}
+        	else if(c[i]>0)
+        	{
+        		System.out.print("+");
+        	}
+        	if(c[i]!=1)
+        	{
+        		System.out.print(c[i]);
+        	}
+        	if(i!=0)
+        	{
+        		System.out.print("x");
+        	}
+        	if(i>=2)
+        	{
+        		System.out.print(i);
+        	}
+        	
+        }
+        
+        
+      
+        
+        
+       }
 	}
-}
-if(flag) //如果没有输入输出0
-	System.out.print(0);
-}
-}
 
 
 
